@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohit Jayee — Lead Full Stack Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:     #0c0c12;
+            --bg2:    #13131d;
+            --bg3:    #1b1b28;
+            --gold:   #c8a86b;
+            --gold-l: #e0c48a;
+            --white:  #f0ede8;
+            --gray:   #8a8799;
+            --border: rgba(200,168,107,0.14);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--white);
+            font-family: 'Syne', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Grain */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 999;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            opacity: 0.025;
+        }
+
+        /* ── NAV ─────────────────────────────────── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(12,12,18,0.85);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 0.06em;
+        }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* ── HERO ─────────────────────────────────── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 4rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(200,168,107,0.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(200,168,107,0.045) 1px, transparent 1px);
+            background-size: 64px 64px;
+            mask-image: radial-gradient(ellipse 70% 70% at 40% 50%, black 10%, transparent 70%);
+        }
+        .hero-eyebrow {
+            font-size: 0.72rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: fadeUp 0.8s ease both;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 36px;
+            height: 1px;
+            background: var(--gold);
+        }
+        h1.hero-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(4.5rem, 11vw, 10rem);
+            font-weight: 300;
+            line-height: 0.88;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.2rem;
+            animation: fadeUp 0.8s 0.1s ease both;
+        }
+        h1.hero-name em { font-style: italic; color: var(--gold); }
+
+        .hero-desc {
+            max-width: 500px;
+            font-size: 0.97rem;
+            color: var(--gray);
+            line-height: 1.85;
+            margin-bottom: 3rem;
+            animation: fadeUp 0.8s 0.2s ease both;
+        }
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeUp 0.8s 0.3s ease both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            background: var(--gold);
+            color: #0c0c12;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-primary:hover { background: var(--gold-l); transform: translateY(-2px); }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            border: 1px solid var(--border);
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: border-color 0.2s, color 0.2s, transform 0.2s;
+        }
+        .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+        .hero-stats {
+            position: absolute;
+            right: 4rem;
+            bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.2rem;
+            animation: fadeUp 0.8s 0.4s ease both;
+        }
+        .stat { text-align: right; }
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        /* ── SECTION BASE ─────────────────────────── */
+        section { padding: 6rem 4rem; }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+        .section-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: var(--gold);
+            opacity: 0.55;
+        }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+        }
+        .section-line { flex: 1; height: 1px; background: var(--border); }
+
+        /* ── FEATURED PROJECT ─────────────────────── */
+        .featured-wrap { padding: 6rem 4rem 0; }
+
+        .featured-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .featured-card:hover { border-color: rgba(200,168,107,0.4); }
+
+        .featured-content {
+            padding: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.63rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(200,168,107,0.28);
+            padding: 0.35rem 0.85rem;
+            width: fit-content;
+        }
+        .featured-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin: 1rem 0 0.5rem;
+        }
+        .featured-sub {
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.75;
+            margin-bottom: 1.4rem;
+        }
+        .featured-desc {
+            color: var(--gray);
+            font-size: 0.94rem;
+            line-height: 1.85;
+        }
+
+        .tag-list { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.5rem; }
+        .tag {
+            font-size: 0.67rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gray);
+            background: var(--bg3);
+            padding: 0.3rem 0.72rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: gap 0.2s;
+            margin-top: 0.5rem;
+        }
+        .project-link:hover { gap: 0.9rem; }
+
+        .featured-visual {
+            background: var(--bg2);
+            border-left: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 420px;
+            position: relative;
+            overflow: hidden;
+        }
+        .visual-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(200,168,107,0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .visual-inner {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2.5rem;
+        }
+        .visual-domain {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: var(--gold);
+            letter-spacing: 0.08em;
+            margin-bottom: 0.8rem;
+        }
+        .visual-desc-sm {
+            font-size: 0.78rem;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+        .visual-pills {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .visual-pill {
+            font-size: 0.67rem;
+            color: var(--gold);
+            border: 1px solid rgba(200,168,107,0.22);
+            padding: 0.35rem 0.8rem;
+            letter-spacing: 0.08em;
+        }
+
+        /* ── PROJECT GRID ─────────────────────────── */
+        .projects-section { padding: 3rem 4rem 6rem; }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+        }
+        .project-card {
+            background: var(--bg2);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.25s;
+        }
+        .project-card:hover { background: var(--bg3); }
+
+        .project-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--gold);
+            opacity: 0.18;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+        .project-card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            font-weight: 300;
+            margin-bottom: 0.4rem;
+            line-height: 1.2;
+        }
+        .project-card-role {
+            font-size: 0.67rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.75;
+            margin-bottom: 1.1rem;
+        }
+        .project-card-desc {
+            color: var(--gray);
+            font-size: 0.88rem;
+            line-height: 1.75;
+            flex: 1;
+            margin-bottom: 1.5rem;
+        }
+        .project-card-url {
+            font-size: 0.72rem;
+            color: var(--gray);
+            opacity: 0.45;
+            letter-spacing: 0.06em;
+        }
+
+        /* ── SKILLS ───────────────────────────────── */
+        #skills { background: var(--bg2); }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-category {
+            border: 1px solid var(--border);
+            padding: 1.8rem;
+        }
+        .skill-cat-title {
+            font-size: 0.67rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .skill-cat-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+        .skill-pills { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+        .skill-pill {
+            font-size: 0.77rem;
+            color: var(--white);
+            background: var(--bg3);
+            padding: 0.38rem 0.78rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: border-color 0.2s, color 0.2s;
+            cursor: default;
+        }
+        .skill-pill:hover { border-color: rgba(200,168,107,0.35); color: var(--gold); }
+
+        /* ── PRINCIPLES ROW ───────────────────────── */
+        .principles-row {
+            display: flex;
+            gap: 1px;
+            background: var(--border);
+            margin-top: 1.5rem;
+        }
+        .principle {
+            flex: 1;
+            background: var(--bg2);
+            padding: 1.2rem 1.5rem;
+            text-align: center;
+        }
+        .principle-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 0.3rem;
+        }
+        .principle-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--white);
+        }
+
+        /* ── EXPERIENCE ───────────────────────────── */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 3.5rem;
+        }
+        .timeline-item:last-child { padding-bottom: 0; }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2rem;
+            top: 0.45rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 1.5px solid var(--gold);
+            transform: translateX(-4px);
+        }
+        .timeline-item.current .timeline-dot {
+            background: var(--gold);
+            box-shadow: 0 0 14px rgba(200,168,107,0.45);
+        }
+        .timeline-period {
+            font-size: 0.68rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.65;
+            margin-bottom: 0.3rem;
+        }
+        .timeline-role {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+        }
+        .timeline-company {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .timeline-company span {
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+        }
+        .timeline-points { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+        .timeline-points li {
+            color: var(--gray);
+            font-size: 0.87rem;
+            line-height: 1.72;
+            padding-left: 1.1rem;
+            position: relative;
+        }
+        .timeline-points li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            opacity: 0.35;
+            font-size: 0.7rem;
+            top: 0.1em;
+        }
+
+        /* ── EDUCATION & CERTS ────────────────────── */
+        #education { background: var(--bg2); }
+
+        .edu-card {
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            max-width: 560px;
+            margin-bottom: 3rem;
+        }
+        .edu-period {
+            font-size: 0.68rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.65;
+            margin-bottom: 0.4rem;
+        }
+        .edu-degree {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 300;
+            margin-bottom: 0.3rem;
+        }
+        .edu-school { color: var(--gray); font-size: 0.9rem; }
+
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1px;
+            background: var(--border);
+        }
+        .cert-card {
+            background: var(--bg);
+            padding: 1.8rem;
+            transition: background 0.2s;
+        }
+        .cert-card:hover { background: var(--bg3); }
+        .cert-issuer {
+            font-size: 0.63rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.65;
+            margin-bottom: 0.4rem;
+        }
+        .cert-name { font-size: 0.9rem; line-height: 1.5; color: var(--white); }
+
+        /* ── CONTACT ──────────────────────────────── */
+        #contact {
+            background: var(--bg2);
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .contact-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 1.4rem;
+        }
+        .contact-heading em { font-style: italic; color: var(--gold); }
+        .contact-sub {
+            color: var(--gray);
+            margin-bottom: 3.5rem;
+            font-size: 0.95rem;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .contact-link:hover { transform: translateY(-3px); }
+        .contact-link-label {
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.55;
+        }
+        .contact-link-value { font-size: 0.9rem; color: var(--white); }
+
+        /* ── FOOTER ───────────────────────────────── */
+        footer {
+            padding: 1.8rem 4rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        footer p { font-size: 0.72rem; color: var(--gray); opacity: 0.4; }
+
+        /* ── ANIMATIONS ───────────────────────────── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── SCROLLBAR ────────────────────────────── */
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+        /* ── RESPONSIVE ───────────────────────────── */
+        @media (max-width: 900px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .hero { padding: 7rem 1.5rem 4rem; }
+            section { padding: 4rem 1.5rem; }
+            .featured-wrap { padding: 4rem 1.5rem 0; }
+            .projects-section { padding: 2rem 1.5rem 4rem; }
+            .hero-stats { position: static; flex-direction: row; margin-top: 3rem; gap: 2rem; }
+            .stat { text-align: left; }
+            .featured-card { grid-template-columns: 1fr; }
+            .featured-visual { min-height: 260px; border-left: none; border-top: 1px solid var(--border); }
+            .projects-grid { grid-template-columns: 1fr; }
+            .principles-row { flex-wrap: wrap; }
+            footer { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════ -->
+<nav>
+    <a href="#home" class="nav-logo">MJ</a>
+    <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- ═══ HERO ════════════════════════════════== -->
+<section class="hero" id="home">
+    <div class="hero-grid"></div>
+    <div class="hero-eyebrow">Lead Full Stack Engineer · 10+ Years</div>
+    <h1 class="hero-name">Mohit<br><em>Jayee</em></h1>
+    <p class="hero-desc">
+        Full-stack engineer with a decade of experience building enterprise platforms, distributed microservices, and production-grade web applications. Currently leading back-office engineering at Payoneer.
+    </p>
+    <div class="hero-ctas">
+        <a href="mailto:mohitjayee@gmail.com" class="btn-primary">Get in touch →</a>
+        <a href="#projects" class="btn-outline">View work ↓</a>
+        <a href="https://www.linkedin.com/in/mohitjayee" target="_blank" class="btn-outline">LinkedIn ↗</a>
+    </div>
+    <div class="hero-stats">
+        <div class="stat">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Companies</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Live Projects</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ FEATURED PROJECT ════════════════════════ -->
+<div class="featured-wrap" id="projects">
+    <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">Featured Work</h2>
+        <div class="section-line"></div>
+    </div>
+
+    <div class="featured-card">
+        <div class="featured-content">
+            <div>
+                <div class="featured-badge">★ &nbsp;Sole developer — built from scratch</div>
+                <h3 class="featured-title">Axco Intelligence</h3>
+                <div class="featured-sub">Full Platform · Nagarro · 2019 – 2023</div>
+                <p class="featured-desc">
+                    Architected and developed the entire Axco Intelligence platform single-handedly from the ground up — a global B2B SaaS product delivering insurance market intelligence and employee benefits data across 250+ territories worldwide. Designed and built the complete ecommerce report store, enabling users to browse, select, and purchase insurance market reports directly on the platform.
+                </p>
+                <div class="tag-list">
+                    <span class="tag">.NET</span>
+                    <span class="tag">Umbraco</span>
+                    <span class="tag">C#</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Ecommerce</span>
+                    <span class="tag">SQL Server</span>
+                    <span class="tag">CI/CD</span>
+                    <span class="tag">Google Analytics</span>
+                </div>
+            </div>
+            <a href="https://www.axcoinfo.com" target="_blank" class="project-link">Visit live site →</a>
+        </div>
+        <div class="featured-visual">
+            <div class="visual-glow"></div>
+            <div class="visual-inner">
+                <div class="visual-domain">axcoinfo.com</div>
+                <div class="visual-desc-sm">
+                    Global Insurance & Employee<br>Benefits Intelligence Platform
+                </div>
+                <div class="visual-pills">
+                    <div class="visual-pill">250+ Territories</div>
+                    <div class="visual-pill">Report Store</div>
+                    <div class="visual-pill">B2B SaaS</div>
+                    <div class="visual-pill">Wilmington plc</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ OTHER PROJECTS ══════════════════════════ -->
+<div class="projects-section">
+    <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">Other Projects</h2>
+        <div class="section-line"></div>
+    </div>
+
+    <div class="projects-grid">
+        <a href="https://www.int-comp.org" target="_blank" class="project-card">
+            <div class="project-num">01</div>
+            <h3 class="project-card-title">International Compliance Association</h3>
+            <div class="project-card-role">Significant Contributor · Filtering Module Lead</div>
+            <p class="project-card-desc">
+                Made significant contributions to the ICA platform — the world's leading professional body for regulatory & financial crime compliance, serving 30,000+ members across 155 countries. Developed the complete courses and events filtering system from scratch using JavaScript, HTML and CSS.
+            </p>
+            <div class="tag-list" style="margin-bottom:1.2rem;">
+                <span class="tag">Umbraco</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">HTML / CSS</span>
+            </div>
+            <span class="project-card-url">int-comp.org ↗</span>
+        </a>
+
+        <a href="https://vbc.risehealth.org/agenda/" target="_blank" class="project-card">
+            <div class="project-num">02</div>
+            <h3 class="project-card-title">RISE Health — Event Agenda Template</h3>
+            <div class="project-card-role">Solo Developer · Reusable Template System</div>
+            <p class="project-card-desc">
+                Developed a reusable, customizable agenda page template from scratch for RISE Health's ecosystem of event minisites. The same template powers agenda pages across multiple RISE Health summits — each independently configurable to match the minisite's branding and content requirements.
+            </p>
+            <div class="tag-list" style="margin-bottom:1.2rem;">
+                <span class="tag">Umbraco</span>
+                <span class="tag">.NET</span>
+                <span class="tag">Template System</span>
+            </div>
+            <span class="project-card-url">vbc.risehealth.org ↗</span>
+        </a>
+
+        <a href="https://www.mercia-group.com" target="_blank" class="project-card">
+            <div class="project-num">03</div>
+            <h3 class="project-card-title">Mercia Group</h3>
+            <div class="project-card-role">SSO Integration · Umbraco Auth</div>
+            <p class="project-card-desc">
+                Implemented Single Sign-On (SSO) between the legacy and redesigned Mercia Group websites using OKTA via OpenID Connect and OAuth 2.0. Integrated Umbraco CMS authentication, enabling seamless login continuity for thousands of accountancy professionals across old and new platforms.
+            </p>
+            <div class="tag-list" style="margin-bottom:1.2rem;">
+                <span class="tag">OKTA</span>
+                <span class="tag">SSO</span>
+                <span class="tag">OpenID Connect</span>
+                <span class="tag">OAuth 2.0</span>
+                <span class="tag">Umbraco</span>
+            </div>
+            <span class="project-card-url">mercia-group.com ↗</span>
+        </a>
+    </div>
+</div>
+
+<!-- ═══ SKILLS ══════════════════════════════════ -->
+<section id="skills">
+    <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Skills & Technologies</h2>
+        <div class="section-line"></div>
+    </div>
+
+    <div class="skills-grid">
+        <div class="skill-category">
+            <div class="skill-cat-title">Backend</div>
+            <div class="skill-pills">
+                <span class="skill-pill">C#</span>
+                <span class="skill-pill">.NET</span>
+                <span class="skill-pill">ASP.NET MVC</span>
+                <span class="skill-pill">Web API</span>
+                <span class="skill-pill">GraphQL</span>
+                <span class="skill-pill">Entity Framework</span>
+                <span class="skill-pill">ADO.NET</span>
+                <span class="skill-pill">Java</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <div class="skill-cat-title">Frontend</div>
+            <div class="skill-pills">
+                <span class="skill-pill">React</span>
+                <span class="skill-pill">TypeScript</span>
+                <span class="skill-pill">JavaScript</span>
+                <span class="skill-pill">jQuery</span>
+                <span class="skill-pill">HTML5</span>
+                <span class="skill-pill">CSS3</span>
+                <span class="skill-pill">Bootstrap</span>
+                <span class="skill-pill">AJAX</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <div class="skill-cat-title">Cloud & DevOps</div>
+            <div class="skill-pills">
+                <span class="skill-pill">AWS EKS</span>
+                <span class="skill-pill">Azure</span>
+                <span class="skill-pill">Docker</span>
+                <span class="skill-pill">Kubernetes</span>
+                <span class="skill-pill">TeamCity</span>
+                <span class="skill-pill">Octopus Deploy</span>
+                <span class="skill-pill">Apache Pulsar</span>
+                <span class="skill-pill">AWS Lambda</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <div class="skill-cat-title">Databases</div>
+            <div class="skill-pills">
+                <span class="skill-pill">SQL Server</span>
+                <span class="skill-pill">Oracle</span>
+                <span class="skill-pill">MS Access</span>
+                <span class="skill-pill">Multi-tenancy DB</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <div class="skill-cat-title">Tools & Platforms</div>
+            <div class="skill-pills">
+                <span class="skill-pill">Umbraco CMS</span>
+                <span class="skill-pill">Splunk</span>
+                <span class="skill-pill">SonarQube</span>
+                <span class="skill-pill">jFrog</span>
+                <span class="skill-pill">Rancher</span>
+                <span class="skill-pill">Hashicorp Vault</span>
+                <span class="skill-pill">OKTA</span>
+                <span class="skill-pill">Cursor AI</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <div class="skill-cat-title">Source Control</div>
+            <div class="skill-pills">
+                <span class="skill-pill">Git</span>
+                <span class="skill-pill">GitHub</span>
+                <span class="skill-pill">GitLab</span>
+                <span class="skill-pill">Bitbucket</span>
+                <span class="skill-pill">Azure DevOps</span>
+                <span class="skill-pill">TFS</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="principles-row">
+        <div class="principle">
+            <div class="principle-label">Principles</div>
+            <div class="principle-value">SOLID · TDD · MVVM · MVC</div>
+        </div>
+        <div class="principle">
+            <div class="principle-label">Design Patterns</div>
+            <div class="principle-value">Strategy · DDD · Singleton · Pub-Sub</div>
+        </div>
+        <div class="principle">
+            <div class="principle-label">Data Formats</div>
+            <div class="principle-value">JSON · XML · Protobuf</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ EXPERIENCE ══════════════════════════════ -->
+<section id="experience">
+    <div class="section-header">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Experience</h2>
+        <div class="section-line"></div>
+    </div>
+
+    <div class="timeline">
+
+        <div class="timeline-item current">
+            <div class="timeline-dot"></div>
+            <div class="timeline-period">Jan 2026 — Present</div>
+            <div class="timeline-role">Lead Full Stack Engineer</div>
+            <div class="timeline-company"><strong>Payoneer</strong> <span>· Gurugram, Haryana</span></div>
+            <ul class="timeline-points">
+                <li>Acting as functional lead for back-office capabilities within the OneX platform — owning design, implementation, and technical decision-making</li>
+                <li>End-to-end ownership of backend services and APIs, from requirements clarification to production deployment</li>
+                <li>Driving architecture discussions for new features, scalability improvements, and system integrations</li>
+                <li>Mentoring engineers on code quality, design patterns, and best practices</li>
+                <li>Core member of hiring panel — interviewed 30+ candidates and contributed to engineering hiring decisions</li>
+                <li>Built a custom Cursor AI skill to run SonarQube analysis locally during development, reducing violations and accelerating delivery</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-period">Feb 2023 — Jan 2026</div>
+            <div class="timeline-role">Software Development Engineer 3</div>
+            <div class="timeline-company"><strong>S&P Global</strong> <span>· Gurugram, Haryana</span></div>
+            <ul class="timeline-points">
+                <li>Led a team of 7 engineers to build an Exception Management module for an enterprise EDM SaaS platform</li>
+                <li>Developed 3 microservices for a multi-tenancy feature using .NET 6 and GraphQL</li>
+                <li>Implemented Publisher-Subscriber pattern with Apache Pulsar using Google Protobuf</li>
+                <li>Implemented multi-tenancy database creation using Hashicorp Vault and AWS Secrets Manager</li>
+                <li>Integrated Splunk Open Telemetry Collector to reduce Mean Time to Mitigate (MTTM) for incidents</li>
+                <li>Deployed and managed containerized workloads using AWS Elastic Kubernetes Service (EKS) and Rancher</li>
+                <li>Implemented server-side pagination and date-time localization for a React + TypeScript Kendo Grid</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-period">Aug 2019 — Feb 2023</div>
+            <div class="timeline-role">Staff Engineer</div>
+            <div class="timeline-company"><strong>Nagarro</strong> <span>· Gurugram, Haryana</span></div>
+            <ul class="timeline-points">
+                <li>Built Axco Intelligence platform entirely from scratch as sole developer — live at axcoinfo.com</li>
+                <li>Implemented SSO across 2 websites using OKTA via OpenID Connect and OAuth 2.0</li>
+                <li>Led a team of 5 in building ecommerce platforms using Umbraco and Angular</li>
+                <li>Rebranded 4 Umbraco websites for improved functionality, UX, and SEO</li>
+                <li>Automated CI/CD pipelines on 10+ websites using TeamCity and Octopus Deploy</li>
+                <li>Contributed to ICA platform — developed courses and events filtering module from scratch</li>
+                <li>Developed reusable event agenda template system for RISE Health minisites</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-period">Nov 2017 — Jul 2019</div>
+            <div class="timeline-role">Senior Software Engineer</div>
+            <div class="timeline-company"><strong>Vitrana</strong> <span>· Noida, Uttar Pradesh</span></div>
+            <ul class="timeline-points">
+                <li>Independently managed 5 projects and web applications simultaneously</li>
+                <li>Added two-factor authentication to a medical web application</li>
+                <li>Built filtering and sorting functionality for patient adverse case data management</li>
+                <li>Analyzed technical debt and drove prioritization discussions with stakeholders</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-period">Dec 2015 — Nov 2017</div>
+            <div class="timeline-role">Assistant System Engineer</div>
+            <div class="timeline-company"><strong>Tata Consultancy Services</strong> <span>· Mumbai, Maharashtra</span></div>
+            <ul class="timeline-points">
+                <li>Developed and maintained a live stock market trading system</li>
+                <li>Monitored the trading platform during market hours and resolved production issues in real-time</li>
+                <li>Conducted performance testing: load, spike, breakpoint, and endurance testing</li>
+                <li>Contributed to an order status application delivering post-market close reporting</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-period">Jan 2015 — Jun 2015</div>
+            <div class="timeline-role">Intern</div>
+            <div class="timeline-company"><strong>Hewlett Packard</strong> <span>· Gurugram, Haryana</span></div>
+            <ul class="timeline-points">
+                <li>Contributed to "Crime and Criminal Tracking Network and Systems" for rural areas</li>
+                <li>Developed ASP.NET web forms using C#, LINQ, AJAX, and ADO.NET</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══ EDUCATION & CERTS ═══════════════════════ -->
+<section id="education">
+    <div class="section-header">
+        <span class="section-number">05</span>
+        <h2 class="section-title">Education & Certifications</h2>
+        <div class="section-line"></div>
+    </div>
+
+    <div class="edu-card">
+        <div class="edu-period">2011 — 2015</div>
+        <div class="edu-degree">B.Tech in Computer Science Engineering</div>
+        <div class="edu-school">Manav Rachna College of Engineering · Faridabad, Haryana</div>
+    </div>
+
+    <div class="certs-grid">
+        <div class="cert-card">
+            <div class="cert-issuer">Microsoft</div>
+            <div class="cert-name">Azure Fundamentals (AZ-900)</div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-issuer">Microsoft</div>
+            <div class="cert-name">Azure AI Fundamentals (AI-900)</div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-issuer">National Stock Exchange</div>
+            <div class="cert-name">NCFM: Financial Markets Fundamentals</div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-issuer">National Stock Exchange</div>
+            <div class="cert-name">NCFM: Equity Derivatives Fundamentals</div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-issuer">Stanford University</div>
+            <div class="cert-name">Technology Entrepreneurship</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ CONTACT ══════════════════════════════════ -->
+<section id="contact">
+    <h2 class="contact-heading">Let's build<br>something <em>great.</em></h2>
+    <p class="contact-sub">Open to senior roles, architecture discussions, and interesting problems.</p>
+    <div class="contact-links">
+        <a href="mailto:mohitjayee@gmail.com" class="contact-link">
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-value">mohitjayee@gmail.com</span>
+        </a>
+        <a href="tel:+918291203863" class="contact-link">
+            <span class="contact-link-label">Phone</span>
+            <span class="contact-link-value">+91 82912 03863</span>
+        </a>
+        <a href="https://www.linkedin.com/in/mohitjayee" target="_blank" class="contact-link">
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-value">linkedin.com/in/mohitjayee</span>
+        </a>
+        <a class="contact-link" style="cursor:default;">
+            <span class="contact-link-label">Location</span>
+            <span class="contact-link-value">Gurgaon, Haryana 🇮🇳</span>
+        </a>
+    </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════ -->
+<footer>
+    <p>© 2026 Mohit Jayee · Lead Full Stack Engineer</p>
+    <p>Designed to deploy on GitHub Pages</p>
+</footer>
+
+</body>
+</html>
