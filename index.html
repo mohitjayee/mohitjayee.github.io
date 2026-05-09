@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohit Jayee — Lead Full Stack Engineer</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230c0c12'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia%2C serif' font-size='26' font-weight='600' fill='%23c8a86b' letter-spacing='1'%3EMJ%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -16,7 +17,7 @@
             --gold:   #c8a86b;
             --gold-l: #e0c48a;
             --white:  #f0ede8;
-            --gray:   #8a8799;
+            --gray:   #9e9cad;
             --border: rgba(200,168,107,0.14);
         }
 
@@ -378,7 +379,7 @@
         .project-card-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.55rem;
-            font-weight: 300;
+            font-weight: 400;
             margin-bottom: 0.4rem;
             line-height: 1.2;
         }
@@ -399,8 +400,7 @@
         }
         .project-card-url {
             font-size: 0.72rem;
-            color: var(--gray);
-            opacity: 0.45;
+            color: #5e5c70;
             letter-spacing: 0.06em;
         }
 
@@ -650,12 +650,71 @@
             flex-wrap: wrap;
             gap: 0.5rem;
         }
-        footer p { font-size: 0.72rem; color: var(--gray); opacity: 0.4; }
+        footer p { font-size: 0.72rem; color: #5e5c70; }
 
         /* ── ANIMATIONS ───────────────────────────── */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(22px); }
             to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── BREAKDOWN BANNER ─────────────────────── */
+        .breakdown-banner {
+            background: #16151f;
+            border-top: 1px solid rgba(200,168,107,0.25);
+            border-bottom: 1px solid rgba(200,168,107,0.25);
+        }
+        .breakdown-inner {
+            padding: 2.2rem 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .breakdown-total {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .breakdown-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #c8a86b;
+        }
+        .breakdown-big {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 300;
+            color: #f0ede8;
+            line-height: 1;
+        }
+        .breakdown-divider {
+            width: 1px;
+            height: 48px;
+            background: rgba(200,168,107,0.2);
+        }
+        .breakdown-companies {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .breakdown-co { text-align: center; }
+        .breakdown-co-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #c8a86b;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+        .breakdown-co-name {
+            font-size: 0.65rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #9e9cad;
         }
 
         /* ── SCROLLBAR ────────────────────────────── */
@@ -714,12 +773,12 @@
             <div class="stat-label">Years Experience</div>
         </div>
         <div class="stat">
-            <div class="stat-number">5</div>
-            <div class="stat-label">Companies</div>
+            <div class="stat-number">19+</div>
+            <div class="stat-label">Projects Delivered</div>
         </div>
         <div class="stat">
-            <div class="stat-number">4</div>
-            <div class="stat-label">Live Projects</div>
+            <div class="stat-number">5</div>
+            <div class="stat-label">Companies</div>
         </div>
     </div>
 </section>
@@ -768,6 +827,44 @@
                     <div class="visual-pill">Wilmington plc</div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ PROJECT BREAKDOWN BANNER ═══════════════ -->
+<div class="breakdown-banner">
+    <div class="breakdown-inner">
+        <div class="breakdown-total">
+            <span class="breakdown-label">Total Projects Delivered</span>
+            <span class="breakdown-big">19+</span>
+        </div>
+        <div class="breakdown-divider"></div>
+        <div class="breakdown-companies">
+            <div class="breakdown-co">
+                <div class="breakdown-co-num">10</div>
+                <div class="breakdown-co-name">Nagarro</div>
+            </div>
+            <div class="breakdown-co">
+                <div class="breakdown-co-num">3</div>
+                <div class="breakdown-co-name">Vitrana</div>
+            </div>
+            <div class="breakdown-co">
+                <div class="breakdown-co-num">2</div>
+                <div class="breakdown-co-name">TCS</div>
+            </div>
+            <div class="breakdown-co">
+                <div class="breakdown-co-num">2</div>
+                <div class="breakdown-co-name">S&amp;P Global</div>
+            </div>
+            <div class="breakdown-co">
+                <div class="breakdown-co-num">2</div>
+                <div class="breakdown-co-name">Payoneer</div>
+            </div>
+        </div>
+        <div class="breakdown-divider"></div>
+        <div class="breakdown-total">
+            <span class="breakdown-label">Publicly Showcased</span>
+            <span class="breakdown-big">4</span>
         </div>
     </div>
 </div>
