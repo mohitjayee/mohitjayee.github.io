@@ -4,6 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohit Jayee — Lead Full Stack Engineer</title>
+
+    <!-- Primary SEO -->
+    <meta name="description" content="Mohit Jayee is a Lead Full Stack Engineer with 10+ years of experience building enterprise platforms, microservices, and production web applications. Currently at Payoneer. Expert in .NET, React, C#, Azure, AWS, and Umbraco.">
+    <meta name="keywords" content="Mohit Jayee, Lead Full Stack Engineer, .NET Developer, React Developer, C# Developer, Software Engineer India, Gurgaon Developer, Azure, AWS, Umbraco, Payoneer, S&P Global, Nagarro">
+    <meta name="author" content="Mohit Jayee">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mohitjayee.github.io/">
+
+    <!-- Open Graph (LinkedIn, Facebook previews) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mohitjayee.github.io/">
+    <meta property="og:title" content="Mohit Jayee — Lead Full Stack Engineer">
+    <meta property="og:description" content="Lead Full Stack Engineer with 10+ years experience. Expert in .NET, React, C#, Azure & AWS. Built 19+ projects across Payoneer, S&P Global, Nagarro and more.">
+    <meta property="og:site_name" content="Mohit Jayee Portfolio">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Mohit Jayee — Lead Full Stack Engineer">
+    <meta name="twitter:description" content="Lead Full Stack Engineer with 10+ years experience. Expert in .NET, React, C#, Azure & AWS.">
+
+    <!-- Theme color (browser tab color on mobile) -->
+    <meta name="theme-color" content="#0c0c12">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230c0c12'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia%2C serif' font-size='26' font-weight='600' fill='%23c8a86b' letter-spacing='1'%3EMJ%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -226,7 +248,8 @@
         .tag { font-size: 0.67rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); background: var(--bg3); padding: 0.3rem 0.72rem; border: 1px solid rgba(255,255,255,0.05); }
         .project-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--gold); text-decoration: none; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; transition: gap 0.2s; margin-top: 0.3rem; }
         .project-link:hover { gap: 0.9rem; }
-        .featured-visual { background: var(--bg2); border-left: 1px solid var(--border); display: flex; align-items: center; justify-content: center; min-height: 300px; position: relative; overflow: hidden; }
+        .featured-visual { background: var(--bg2); border-left: 1px solid var(--border); display: flex; align-items: center; justify-content: center; min-height: 300px; position: relative; overflow: hidden; cursor: pointer; transition: background 0.3s; }
+        .featured-visual:hover { background: #1e1d2a; }
         .visual-glow { position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(200,168,107,0.12) 0%, transparent 70%); border-radius: 50%; }
         .visual-inner { position: relative; z-index: 1; text-align: center; padding: 2rem; }
         .visual-domain { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 0.8rem; }
@@ -416,7 +439,7 @@
                 </div>
                 <a href="https://www.axcoinfo.com" target="_blank" class="project-link">Visit live site →</a>
             </div>
-            <div class="featured-visual">
+            <a href="https://www.axcoinfo.com" target="_blank" rel="noopener" class="featured-visual" style="text-decoration:none;">
                 <div class="visual-glow"></div>
                 <div class="visual-inner">
                     <div class="visual-domain">axcoinfo.com</div>
@@ -428,7 +451,7 @@
                         <div class="visual-pill">Wilmington plc</div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 
